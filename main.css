@@ -58,7 +58,9 @@ a {
 
 .hero-main,
 .logo,
-.button {
+.button,
+.cta-text,
+.footer {
     color: #F9FAF8;
 }
 
@@ -118,9 +120,7 @@ a {
 .card-img {
     width: 150px;
     height: 150px;
-    border-style: solid;
-    border-width: 3px;
-    border-color: #3882F6;
+    border: 3px solid #3882F6;
     border-radius: 10px;
     margin-bottom: 10px;
 }
@@ -150,4 +150,46 @@ a {
 .quote-author {
     text-align: right;
     margin-top: 20px;
+}
+
+.cta-wrapper {
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta {
+    background-color: #3882F6;
+    border-radius: 5px;
+    width: 900px;
+    display: flex;
+    align-items: center;
+
+}
+
+.cta-text {
+    flex: 2;
+    margin: 40px 90px;
+}
+
+.cta-text > p {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 5px 0;
+}
+
+.cta-button {
+    flex: 1;
+}
+
+.cta-button > a {
+    border:1px solid #F9FAF8;
+}
+
+.footer {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
