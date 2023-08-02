@@ -12,6 +12,16 @@ a {
     background-color: #1F2937;
 }
 
+.white-text {
+    color: #F9FAF8;
+}
+
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .header {
     height: 10vh;
     display: flex;
@@ -32,16 +42,10 @@ a {
 
 .hero-wrapper {
     height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .hero {
     width: 70vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .hero-text {
@@ -54,14 +58,6 @@ a {
 
 .hero-img {
     width: 480px;
-}
-
-.hero-main,
-.logo,
-.button,
-.cta-text,
-.footer {
-    color: #F9FAF8;
 }
 
 .hero-main{
@@ -85,9 +81,6 @@ a {
     width: 130px;
     height: 30px;
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .info-header,
@@ -98,16 +91,10 @@ a {
 
 .info-header {
     height: 20vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     font-weight: bolder;
 }
 
 .card-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-bottom: 10vh;
     gap: 40px;
 }
@@ -133,9 +120,6 @@ a {
 .quote-wrapper {
     background-color: #E5E7EB;
     height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .quote-container {
@@ -154,18 +138,12 @@ a {
 
 .cta-wrapper {
     height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .cta {
     background-color: #3882F6;
     border-radius: 5px;
     width: 900px;
-    display: flex;
-    align-items: center;
-
 }
 
 .cta-text {
@@ -179,17 +157,14 @@ a {
     margin: 5px 0;
 }
 
-.cta-button {
+.cta-button-wrapper {
     flex: 1;
 }
 
-.cta-button > a {
+.cta-button {
     border:1px solid #F9FAF8;
 }
 
 .footer {
     height: 15vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
