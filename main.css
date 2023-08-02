@@ -57,7 +57,8 @@ a {
 }
 
 .hero-main,
-.logo {
+.logo,
+.button {
     color: #F9FAF8;
 }
 
@@ -71,13 +72,12 @@ a {
     font-weight: bolder;
 }
 
-.subtext,
-.button-bg {
+.subtext {
     color: #E5E7EB;
-    font-size: 18px;
 }
 
-.button-bg {
+.button {
+    font-size: 18px;
     background-color: #3882F6;
     width: 130px;
     height: 30px;
@@ -94,7 +94,38 @@ a {
 }
 
 .info-header {
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: bolder;
+}
+
+.card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10vh;
+    gap: 40px;
+}
+
+.card {
+    width: 170px;
+    text-align: center;
+}
+
+.card-img {
+    width: 150px;
+    height: 150px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #3882F6;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.card > .subtext {
+    color: #6D747D;
 }
 
 .quote {
