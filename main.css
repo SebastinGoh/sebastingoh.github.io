@@ -67,7 +67,8 @@ a {
     font-weight: bolder;
 }
 
-.logo {
+.logo,
+.quote-author {
     font-size: 24px;
     font-weight: bolder;
 }
@@ -128,10 +129,25 @@ a {
     color: #6D747D;
 }
 
-.quote {
-    font-style: italic;
+
+.quote-wrapper {
+    background-color: #E5E7EB;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.quote-bg {
-    background-color: #E5E7EB;
+.quote-container {
+    width: 750px;
+}
+
+.quote {
+    font-style: italic;
+    font-weight: 300;
+}
+
+.quote-author {
+    text-align: right;
+    margin-top: 20px;
 }
