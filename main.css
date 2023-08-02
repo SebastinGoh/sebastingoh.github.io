@@ -13,7 +13,7 @@ a {
 }
 
 .header {
-    height: 50px;
+    height: 10vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -28,6 +28,32 @@ a {
 
 .header-links > li {
     padding: 0 15px;
+}
+
+.hero-wrapper {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero {
+    width: 70vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    margin: 10px;
+}
+
+.hero-text > * {
+    margin: 15px 0;
+}
+
+.hero-img {
+    width: 480px;
 }
 
 .hero-main,
@@ -45,13 +71,20 @@ a {
     font-weight: bolder;
 }
 
-.subtext {
+.subtext,
+.button-bg {
     color: #E5E7EB;
     font-size: 18px;
 }
 
 .button-bg {
     background-color: #3882F6;
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .info-header,
