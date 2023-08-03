@@ -1,3 +1,4 @@
+/* Styling for whole website */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
@@ -8,6 +9,13 @@ a {
     color: inherit;
 }
 
+/* Common styling for website elements */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .dark-bg {
     background-color: #1F2937;
 }
@@ -16,12 +24,19 @@ a {
     color: #F9FAF8;
 }
 
-.centered {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.subtext {
+    color: #E5E7EB;
 }
 
+.button {
+    font-size: 18px;
+    background-color: #3882F6;
+    width: 130px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+/* Styling for header navigation bar section */
 .header {
     height: 10vh;
     display: flex;
@@ -40,6 +55,7 @@ a {
     padding: 0 15px;
 }
 
+/* Styling for hero text & image section */
 .hero-wrapper {
     height: 80vh;
 }
@@ -75,18 +91,7 @@ a {
     font-weight: bolder;
 }
 
-.subtext {
-    color: #E5E7EB;
-}
-
-.button {
-    font-size: 18px;
-    background-color: #3882F6;
-    width: 130px;
-    height: 30px;
-    border-radius: 5px;
-}
-
+/* Styling for 'some random information' section */
 .info-header,
 .quote {
     color: #1F2937;
@@ -120,7 +125,7 @@ a {
     color: #6D747D;
 }
 
-
+/* Styling for quote section */
 .quote-wrapper {
     background-color: #E5E7EB;
     height: 50vh;
@@ -140,6 +145,7 @@ a {
     margin-top: 20px;
 }
 
+/* Styling for call-to-action section */
 .cta-wrapper {
     height: 50vh;
 }
@@ -169,6 +175,7 @@ a {
     border:1px solid #F9FAF8;
 }
 
+/* Styling for footer section */
 .footer {
     height: 15vh;
 }
