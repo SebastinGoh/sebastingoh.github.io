@@ -34,8 +34,6 @@ body {
 }
 
 .square {
-    box-sizing: border-box;
-    flex: 1 0 25%;
     border: solid 1px;
     
     /* Include border into size determination of square */
