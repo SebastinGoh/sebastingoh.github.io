@@ -1,8 +1,8 @@
-document.body.onload = makeBoardSquares(16);
+document.body.onload = makeBoardSquares(4);
 
 function makeBoardSquares(num) {
     document.getElementById("board").innerHTML = "";
-    for (let times = 0; times < num; times++) {
+    for (let times = 0; times < num**2; times++) {
         let square = document.createElement("div");
         square.classList.add("square");
         square.setAttribute("id", times);
@@ -11,9 +11,19 @@ function makeBoardSquares(num) {
           });
         document.getElementById("board").appendChild(square);
     }
+    
+    // in order to determine flex-basis of each square
+    // 100% divide by number of squares per side
+    let basisNum = 100/num;
+
+    // change the flex-basis value for all squares
+    squares = document.querySelectorAll('.square');
+    squares.forEach(square => {
+        square.style.cssText = `flex-basis: ${basisNum}%`
+    });
 }
 
 function resetBoard() {
-    let num = prompt("How many squares in the board?");
+    let num = prompt("How many squares per side?");
     makeBoardSquares(num);
 }
