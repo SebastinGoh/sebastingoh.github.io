@@ -21,6 +21,9 @@ function initialiseGame() {
     document.getElementById("computerScore").innerHTML = computerScore;
     document.getElementById("playerScore").innerHTML = playerScore;
     document.getElementById("roundCounter").innerHTML = roundCounter;
+
+    // hide reset button
+    document.getElementById("reset").style.display = "none";
 }
 
 function getComputerChoice() {
@@ -117,9 +120,23 @@ function startRound(playerChoice) {
         } else {
             document.getElementById("message").innerHTML = "Computer Wins";
         }
-        // reset scores and round counter
-        initialiseGame();
+        // hide player options
+        document.getElementById("Rock").style.display = "none";
+        document.getElementById("Paper").style.display = "none";
+        document.getElementById("Scissors").style.display = "none";
+
+        // show reset button
+        document.getElementById("reset").style.display = "block";
     } 
+}
+
+function resetGame() {
+    initialiseGame();
+
+    // show player options
+    document.getElementById("Rock").style.display = "block";
+    document.getElementById("Paper").style.display = "block";
+    document.getElementById("Scissors").style.display = "block";
 }
 
 // initialise scores and round counter
