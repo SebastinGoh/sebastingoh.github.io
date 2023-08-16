@@ -18,22 +18,29 @@ body {
 
 .title {
     text-align: center;
-    width: 40vw;
+    width: 20vw;
     font-size: xx-large;
 }
 
 .board-container {
-    width: 40vw;
+    width: 60vw;
 }
 
 .board {
-    width: 40vh;
-    height: 40vh;
+    width: 80vh;
+    height: 80vh;
     display: flex;
     flex-wrap: wrap;
 }
 
 .square {
-    flex: 1 0 calc(25% - 10px);
+    box-sizing: border-box;
+    flex: 1 0 25%;
     border: solid 1px;
+    
+    /* Include border into size determination of square */
+    box-sizing: border-box;
+
+    /* Default flex basis for 4 squares per row */
+    flex: 1 0 25%;
 }
