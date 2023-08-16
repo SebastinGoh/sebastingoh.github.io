@@ -111,7 +111,7 @@ function startRound(playerChoice) {
     document.getElementById("message").innerHTML = roundResult.message;
 
     // end game when anyone's score equals 5
-    if (computerScore == 4 || playerScore == 4) {
+    if (computerScore == 5 || playerScore == 5) {
         if (playerScore > computerScore) {
             document.getElementById("message").innerHTML = "Player Wins";
         } else {
