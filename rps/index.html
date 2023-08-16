@@ -11,7 +11,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     
     <!--External referencing for javascript-->
-    <script type='text/javascript' src='main.js'></script>
+    <script type='text/javascript' src='main.js' defer></script>
 
     <!--External referencing for Roboto font from Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +19,38 @@
     
 </head>
 <body>
-    <h1 class="centered">
-        Rock Paper Scissors
-    </h1>
+    <div class="centered">
+        <h1>
+            Rock Paper Scissors Game
+        </h1>
+    </div>
+    <div class="centered">
+        <h2>
+            Get a score of 5 to win! Select your option below and the computer's choice will be randomised!
+        </h2>
+    </div>
+    <div class="buttons centered">
+        <button id="Rock" class="button" onclick="startRound(this.id)">Rock</button>
+        <button id="Paper" class="button" onclick="startRound(this.id)">Paper</button>
+        <button id="Scissors" class="button" onclick="startRound(this.id)">Scissors</button>
+    </div>
+    <div class="centered">
+        <h2>
+            Round <span id="roundCounter"></span>
+        </h2>
+    </div>
+    <div class="centered">
+        <h2 id="message"></h2>
+    </div>
+    <div class="centered">
+        <h2>
+            Player Score: <span id="playerScore"></span>
+        </h2>
+    </div>
+    <div class="centered">
+        <h2>
+            Computer Score: <span id="computerScore"></span>
+        </h2>
+    </div>
 </body>
 </html>
