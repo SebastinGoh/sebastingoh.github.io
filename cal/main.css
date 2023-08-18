@@ -20,26 +20,26 @@ button {
 }
 
 .container {
-    height: 100vh;
+    height: 700px;
 }
 
 .calculator-body {
     background-color: black;
-    border-radius: 10px;
-    width: 20vw;
-    height: 75vh;
+    border-radius: 50px;
+    width: 300px;
+    height: 500px;
     display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
     flex-wrap: wrap;
-    padding: 15px;
+    padding: 50px 10px;
 }
 
 .calculator-display {
     box-sizing: border-box;
     /* background-color: gray; */
     border-radius: 10px;
-    height: 225px;
+    height: 150px;
     flex-basis: 100%;
     display: flex;
     align-items: flex-end;
