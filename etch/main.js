@@ -1,4 +1,4 @@
-document.body.onload = makeBoardSquares(4);git
+document.body.onload = makeBoardSquares(4);
 
 function makeBoardSquares(num) {
     document.getElementById("board").innerHTML = "";
