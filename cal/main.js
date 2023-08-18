@@ -1,3 +1,43 @@
+document.body.onload = clearCalculatorDisplay();
+
+function setCalculatorDisplay(num) {
+    currentDisplay = document.getElementById("calculator-display").innerHTML;
+    if (currentDisplay == 0){
+        newDisplay = num;
+    } else {
+        newDisplay = currentDisplay + num;
+    }
+    document.getElementById("calculator-display").innerHTML = "";
+    document.getElementById("calculator-display").innerHTML = newDisplay;
+}
+
+function clearCalculatorDisplay() {
+    document.getElementById("calculator-display").innerHTML = "0";
+}
+
+buttons = document.querySelectorAll('.calculator-button');
+buttons.forEach(button => {
+    button.addEventListener("click", handleClick);
+})
+
+function handleClick(event) {
+    pressedButton = event.target.innerHTML.trim();
+    operators = ['÷','×','−','+','.'];
+    if (!isNaN(pressedButton) || operators.includes(pressedButton)) {
+        setCalculatorDisplay(pressedButton);
+    } else if (pressedButton == "AC") {
+        clearCalculatorDisplay();
+    } else if (pressedButton == "=") {
+        evaluateCalculatorDisplay();
+    }
+}
+
+function evaluateCalculatorDisplay() {
+    currentDisplay = document.getElementById("calculator-display").innerHTML;
+    nums = currentDisplay.split("");
+    document.getElementById("calculator-display").innerHTML = nums;
+}
+
 function add(num1, num2) {
     return num1 + num2;
 }
