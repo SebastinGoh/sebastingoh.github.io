@@ -1,0 +1,17 @@
+/* Styling for whole website */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    background-color: antiquewhite;
+}
+
+/* Common styling for website elements */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    height: 100vh;
+}
