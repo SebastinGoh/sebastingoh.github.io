@@ -41,6 +41,7 @@ button {
 .calculator-display {
     box-sizing: border-box;
     /* background-color: gray; */
+    letter-spacing: -1px;
     flex-grow: 2;
     display: flex;
     align-items: flex-end;
@@ -74,6 +75,11 @@ button {
 
 .operator {
     background-color: #f69808;
+}
+
+.operator-pressed {
+    background-color: whitesmoke;
+    color: #f69808;
 }
 
 .misc {

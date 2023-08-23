@@ -1,18 +1,16 @@
 document.body.onload = clearCalculatorDisplay();
 
+let num1 = "";
+let operator = "";
+let num2 = "";
+
 function setCalculatorDisplay(num) {
-    currentDisplay = document.getElementById("calculator-display").innerHTML;
-    if (currentDisplay == 0){
-        newDisplay = num;
-    } else {
-        newDisplay = currentDisplay + num;
-    }
     document.getElementById("calculator-display").innerHTML = "";
-    document.getElementById("calculator-display").innerHTML = newDisplay;
+    document.getElementById("calculator-display").innerHTML = num;
 }
 
 function clearCalculatorDisplay() {
-    document.getElementById("calculator-display").innerHTML = "0";
+    setCalculatorDisplay(0);
 }
 
 buttons = document.querySelectorAll('.calculator-button');
@@ -23,8 +21,10 @@ buttons.forEach(button => {
 function handleClick(event) {
     pressedButton = event.target.innerHTML.trim();
     operators = ['÷','×','−','+','.'];
-    if (!isNaN(pressedButton) || operators.includes(pressedButton)) {
-        setCalculatorDisplay(pressedButton);
+    if (!isNaN(pressedButton)) {
+        handleNumber(pressedButton);
+    } else if (operators.includes(pressedButton)) {
+        handleOperator(pressedButton);
     } else if (pressedButton == "AC") {
         clearCalculatorDisplay();
     } else if (pressedButton == "=") {
@@ -32,10 +32,40 @@ function handleClick(event) {
     }
 }
 
+function handleNumber(pressedButton) {
+    currentDisplay = document.getElementById("calculator-display").innerHTML;
+    if (currentDisplay.startsWith(0) || currentDisplay == "Error") {
+        newDisplay = pressedButton;
+    } else {
+        newDisplay = currentDisplay + pressedButton;
+    }
+    setCalculatorDisplay(newDisplay);
+}
+
+function handleOperator(pressedButton) {
+    currentDisplay = document.getElementById("calculator-display").innerHTML;
+    if (currentDisplay.startsWith(0)) {
+        newDisplay = 0;
+    } else {
+        newDisplay = currentDisplay + pressedButton;
+    }
+    setCalculatorDisplay(newDisplay);
+}
+
 function evaluateCalculatorDisplay() {
     currentDisplay = document.getElementById("calculator-display").innerHTML;
     nums = currentDisplay.split("");
-    document.getElementById("calculator-display").innerHTML = nums;
+    // check through each digit in array, assuming single operator single
+    // store first as num1
+    // store second as operator
+    // store third as num2
+    // switch statement to check value of 'operator'
+    let num1 = nums[0];
+    let operator = nums[1];
+    let num2 = nums[2];
+    
+    newDisplay = operate(num1, operator, num2)
+    setCalculatorDisplay(newDisplay);
 }
 
 function add(num1, num2) {
@@ -54,17 +84,20 @@ function divide(num1, num2) {
     return num1 / num2;
 }
 
-let num1, num2, operator;
-
 function operate(num1, operator, num2) {
-    switch(operator) {
-        case "add":
-            return add(num1, num2);
-        case "subtract":
-            return subtract(num1, num2);
-        case "multiply":
-            return multiply(num1, num2);
-        case "divide":
-            return divide(num1, num2);
+    switch (operator) {
+        case "+":
+            newDisplay = add(num1, num2);
+            break;
+        case "−":
+            newDisplay = subtract(num1, num2);
+            break;
+        case "×":
+            newDisplay = multiply(num1, num2);
+            break;
+        case "÷":
+            newDisplay = divide(num1, num2);
+            break;
     }
+    return newDisplay;
 }
