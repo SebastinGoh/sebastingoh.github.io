@@ -1,103 +1,163 @@
-document.body.onload = clearCalculatorDisplay();
+// Add chaining functionality without 'equal' pressing
+// After first evaluation, if number pressed, reset num1
+// Limit screen showing digits
+// Give error message when dividing by 0
+// handleAlteratorButton fix for initial values and multiple presses to do nothing
 
-let num1 = "";
-let operator = "";
-let num2 = "";
+document.body.onload = resetCalculatorDisplay(true);
 
-function setCalculatorDisplay(num) {
+function setCalculatorDisplay() {
     document.getElementById("calculator-display").innerHTML = "";
-    document.getElementById("calculator-display").innerHTML = num;
+    if (equation[2] == '') {
+        document.getElementById("calculator-display").innerHTML = equation[0];
+    } else {
+        document.getElementById("calculator-display").innerHTML = equation[2];
+    }
 }
 
-function clearCalculatorDisplay() {
-    setCalculatorDisplay(0);
+function resetCalculatorDisplay(initial = false) {
+    if (!initial) {
+        removeActiveOperatorButton();
+    }
+    evaluated = false;
+    equation = [0, '', ''];   
+    setCalculatorDisplay();
 }
 
-buttons = document.querySelectorAll('.calculator-button');
+const buttons = document.querySelectorAll('.calculator-button');
 buttons.forEach(button => {
     button.addEventListener("click", handleClick);
 })
 
 function handleClick(event) {
     pressedButton = event.target.innerHTML.trim();
-    operators = ['÷','×','−','+','.'];
+    evaluateButtonType(pressedButton);
+    console.log(equation);
+}
+
+function checkFirstButton(equation) {
+    if (equation[0] == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function evaluateButtonType(pressedButton) {
+    operators = ['÷','×','−','+'];
+    alterators = ['.','%','±'];
     if (!isNaN(pressedButton)) {
-        handleNumber(pressedButton);
+        handleNumberButton(pressedButton);
     } else if (operators.includes(pressedButton)) {
-        handleOperator(pressedButton);
+        handleOperatorButton(pressedButton);
+    } else if (alterators.includes(pressedButton)) {
+        handleAlteratorButton(pressedButton);
     } else if (pressedButton == "AC") {
-        clearCalculatorDisplay();
+        resetCalculatorDisplay();
     } else if (pressedButton == "=") {
-        evaluateCalculatorDisplay();
+        if (canEvaluate()) {
+            evaluateEquation();
+        }
     }
 }
 
-function handleNumber(pressedButton) {
-    currentDisplay = document.getElementById("calculator-display").innerHTML;
-    if (currentDisplay.startsWith(0) || currentDisplay == "Error") {
-        newDisplay = pressedButton;
+function handleNumberButton(pressedButton) {
+    if (checkFirstButton(equation) || evaluated) {
+        equation[0] = pressedButton;
     } else {
-        newDisplay = currentDisplay + pressedButton;
+        if (equation[1] == '') {
+            newNum = equation[0] + pressedButton;
+            equation[0] = newNum;
+        } else if (equation[2] == '') {
+            equation[2] = pressedButton;
+            removeActiveOperatorButton();
+        } else {
+            newNum = equation[2] + pressedButton;
+            equation[2] = newNum;
+        }
     }
-    setCalculatorDisplay(newDisplay);
+    setCalculatorDisplay();
 }
 
-function handleOperator(pressedButton) {
-    currentDisplay = document.getElementById("calculator-display").innerHTML;
-    if (currentDisplay.startsWith(0)) {
-        newDisplay = 0;
+function handleOperatorButton(pressedButton) {
+    changeActiveOperatorButton(pressedButton);
+    equation[1] = pressedButton;
+}
+
+function handleAlteratorButton(pressedButton) {
+    if (equation[2] == '') {
+        result = equation[0];
+        changeFirstNum = true;
     } else {
-        newDisplay = currentDisplay + pressedButton;
+        result = equation[2];
+        changeFirstNum = false;
     }
-    setCalculatorDisplay(newDisplay);
+    switch (pressedButton) {
+        case ".":
+            if (!(result.includes("."))) {
+                result = result + ".";
+            }
+            break;
+        case "%":
+            result = Number(result) * 0.01;
+            break;
+        case "±":
+            if (result.includes("-")) {
+                result = result.substring(1);
+            } else {
+                result = "-" + result;
+            }
+            break;
+    }
+    if (changeFirstNum) {
+        equation[0] = result;
+    } else {
+        equation[2] = result;
+    }
+    setCalculatorDisplay();
 }
 
-function evaluateCalculatorDisplay() {
-    currentDisplay = document.getElementById("calculator-display").innerHTML;
-    nums = currentDisplay.split("");
-    // check through each digit in array, assuming single operator single
-    // store first as num1
-    // store second as operator
-    // store third as num2
-    // switch statement to check value of 'operator'
-    let num1 = nums[0];
-    let operator = nums[1];
-    let num2 = nums[2];
+function changeActiveOperatorButton(pressedButton) {
+    removeActiveOperatorButton();
+    var newOperator = document.getElementById(pressedButton);
+    newOperator.classList.toggle("operator-pressed");
     
-    newDisplay = operate(num1, operator, num2)
-    setCalculatorDisplay(newDisplay);
 }
 
-function add(num1, num2) {
-    return num1 + num2;
+function removeActiveOperatorButton() {
+    const operators = document.querySelectorAll('.operator');
+    operators.forEach(operator => {
+        operator.classList.remove("operator-pressed");
+    })
 }
 
-function subtract(num1, num2) {
-    return num1 - num2;
+function canEvaluate() {
+    if (equation[1] !== "" && !isNaN(equation[2])) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
-function multiply(num1, num2) {
-    return num1 * num2;
-}
-
-function divide(num1, num2) {
-    return num1 / num2;
-}
-
-function operate(num1, operator, num2) {
+function evaluateEquation() {
+    num1 = Number(equation[0]);
+    operator = equation[1];
+    num2 = Number(equation[2]);
     switch (operator) {
         case "+":
-            newDisplay = add(num1, num2);
+            result = num1 + num2;
             break;
         case "−":
-            newDisplay = subtract(num1, num2);
+            result = num1 - num2;
             break;
         case "×":
-            newDisplay = multiply(num1, num2);
+            result = num1 * num2;
             break;
         case "÷":
-            newDisplay = divide(num1, num2);
+            result = num1 / num2;
             break;
     }
-    return newDisplay;
+    equation = [result, '', ''];
+    evaluated = true;
+    setCalculatorDisplay();
 }
