@@ -2,7 +2,7 @@
 // After first evaluation, if number pressed, reset num1
 // Limit screen showing digits
 // Give error message when dividing by 0
-// handleAlteratorButton fix for initial values and multiple presses to do nothing
+// handleAlteratorButton fix for multiple presses to do nothing (not give error)
 
 document.body.onload = resetCalculatorDisplay(true);
 
@@ -19,7 +19,7 @@ function resetCalculatorDisplay(initial = false) {
     if (!initial) {
         removeActiveOperatorButton();
     }
-    evaluated = false;
+    evaluatedBefore = false;
     equation = [0, '', ''];   
     setCalculatorDisplay();
 }
@@ -62,7 +62,7 @@ function evaluateButtonType(pressedButton) {
 }
 
 function handleNumberButton(pressedButton) {
-    if (checkFirstButton(equation) || evaluated) {
+    if (checkFirstButton(equation) || evaluatedBefore) {
         equation[0] = pressedButton;
     } else {
         if (equation[1] == '') {
@@ -92,23 +92,30 @@ function handleAlteratorButton(pressedButton) {
         result = equation[2];
         changeFirstNum = false;
     }
-    switch (pressedButton) {
-        case ".":
-            if (!(result.includes("."))) {
-                result = result + ".";
-            }
-            break;
-        case "%":
-            result = Number(result) * 0.01;
-            break;
-        case "±":
-            if (result.includes("-")) {
-                result = result.substring(1);
-            } else {
-                result = "-" + result;
-            }
-            break;
+    if (checkFirstButton(equation)) {
+        result = 0;
+    } else {
+        switch (pressedButton) {
+            case ".":
+                if (!(result.includes("."))) {
+                    result = result + ".";
+                } 
+                break;
+            case "%":
+                if (!(result.includes("."))) {
+                    result = Number(result) * 0.01;
+                }
+                break;
+            case "±":
+                if (!(result.includes("-"))) {
+                    result = "-" + result;
+                } else {
+                    result = result.substring(1);
+                }
+                break;
+        }
     }
+    
     if (changeFirstNum) {
         equation[0] = result;
     } else {
@@ -158,6 +165,6 @@ function evaluateEquation() {
             break;
     }
     equation = [result, '', ''];
-    evaluated = true;
+    evaluatedBefore = true;
     setCalculatorDisplay();
 }
