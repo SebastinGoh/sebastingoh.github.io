@@ -1,8 +1,11 @@
-// Add chaining functionality without 'equal' pressing
-// After first evaluation, if number pressed, reset num1
-// Limit screen showing digits
-// Give error message when dividing by 0
-// handleAlteratorButton fix for multiple presses to do nothing (not give error)
+// Possible Additions to make
+/* 
+- Add chaining functionality without 'equal' pressing
+- After first evaluation, if number pressed, reset num1
+- Limit screen showing digits
+- Give error message when dividing by 0 (now gives 'Infinity')
+- handleAlteratorButton fix for multiple presses to do nothing (not give error)
+*/
 
 document.body.onload = resetCalculatorDisplay(true);
 
