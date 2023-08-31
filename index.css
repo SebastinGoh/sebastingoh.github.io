@@ -7,7 +7,7 @@ body {
 }
 
 .centered {
-    margin-top: 10px;
+    margin: 10px 0px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,6 +19,7 @@ table {
     border: 2px solid rgb(200,200,200);
     letter-spacing: 1px;
     font-size: 0.8rem;
+    max-width: 90vw;
 }
 
 tbody {
