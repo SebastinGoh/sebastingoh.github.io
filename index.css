@@ -1,0 +1,44 @@
+html,
+body {
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+    color: gray;
+}
+
+.centered {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+table {
+    border-collapse: collapse;
+    border: 2px solid rgb(200,200,200);
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+}
+
+tbody {
+    font-size: 95%;
+    font-style: italic;
+}
+  
+tfoot {
+    font-weight: bold;
+}
+
+td, th {
+    border: 1px solid rgb(190,190,190);
+    padding: 10px 20px;
+}
+
+td {
+    text-align: center;
+}
+
+caption {
+    padding: 10px;
+}
