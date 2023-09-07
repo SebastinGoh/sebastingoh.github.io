@@ -1,440 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="index.css"> -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <title>Immediate HTML & CSS Practice</title>
-    <style>
-        body {
-            background-color: black;
-        }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!--External referencing for javascript-->
+  <script type='text/javascript' src='index.js'></script>
 
-        :root{
-            --light: #74D0F6;
-            --dark: #9195FF;
-        }
-
-        svg {
-            cursor: pointer;
-        }
-
-        #lightgroup {
-            fill: var(--light);
-        }
-
-        #darkgroup {
-            fill: var(--dark);
-        }
-
-        #dark1,
-        #dark2,
-        #light1 {
-            transition: all 1s ease;
-        }
-
-        #dark2 {
-            transform: translateX(-100%);
-        }
-
-        svg:hover #light1 {
-            transform: translateX(20%);
-        }
-        
-        svg:hover #dark1 {
-            transform: translateX(40%);
-            opacity: 0;
-        }
-        
-        svg:hover #dark2 {
-            transform: translateX(5%);
-        }
-    </style>
-    <?php
-    // Read directory, spit out links
-    if ($handle = opendir('.')) {
-        while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") {
-                echo '<a href="/'.$entry.'">Link to file '.$entry.'</a><br>';
-            }
-        }
-        closedir($handle);
-    }
-    ?>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+  <title>Sebastin Github</title>
 </head>
 <body>
-    
-    <div class="centered">
-        <h4>Hover Animation</h4>
-        <svg width="120" height="100" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="triangles">
-                <g id="lightgroup" opacity="0.7">
-                    <path id="light1" d="M51 48.268C52.3333 49.0378 52.3333 50.9623 51 51.7321L16.5 71.6506C15.1667 72.4204 13.5 71.4582 13.5 69.9186L13.5 30.0814C13.5 28.5418 15.1667 27.5796 16.5 28.3494L51 48.268Z"/>
-                </g>
-                <g id="darkgroup" opacity="0.7">
-                    <path id="dark2" d="M51 48.268C52.3333 49.0378 52.3333 50.9623 51 51.7321L16.5 71.6506C15.1667 72.4204 13.5 71.4582 13.5 69.9186L13.5 30.0814C13.5 28.5418 15.1667 27.5796 16.5 28.3494L51 48.268Z"/>
-                    <path id="dark1" d="M67 48.268C68.3333 49.0378 68.3333 50.9623 67 51.7321L32.5 71.6506C31.1667 72.4204 29.5 71.4582 29.5 69.9186L29.5 30.0814C29.5 28.5418 31.1667 27.5796 32.5 28.3494L67 48.268Z"/>
-                </g>
-            </g>
-        </svg>
+  <!-- Header -->
+  <header class="container">
+      <h1>Sebastin Github Projects</h1>
+  </header>
+  <!-- ./ Header -->
+  <!-- Main -->
+  <main class="container">
+    <div class="grid">
+      <div>
+        <article id="landing">
+          <h3>landing page</h3>
+          <figure>
+            <img src="./landing/landing.png" alt="landing">
+          </figure>
+          <div class="grid">
+            <button class="secondary" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="code">View Code</button>
+            <button class="contrast" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="live">Live Demo</button>
+          </div>
+        </article>
+        <article id="rps">
+          <h3>rock-paper-scissors</h3>
+          <figure>
+            <img src="./rps/rps.png" alt="rock-paper-scissors">
+          </figure>
+          <div class="grid">
+            <button class="secondary" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="code">View Code</button>
+            <button class="contrast" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="live">Live Demo</button>
+          </div>
+        </article>
+      </div>
+      
+      <div>
+        <article id="etch">
+          <h3>etch-a-sketch</h3>
+          <figure>
+            <img src="./etch/etch.png" alt="etch-a-sketch">
+          </figure>
+          <div class="grid">
+            <button class="secondary" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="code">View Code</button>
+            <button class="contrast" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="live">Live Demo</button>
+          </div>
+        </article>
+        <article id="cal">
+          <h3>calculator</h3>
+          <figure>
+            <img src="./cal/cal.png" alt="calculator">
+          </figure>
+          <div class="grid">
+            <button class="secondary" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="code">View Code</button>
+            <button class="contrast" onclick="handleClick(this.parentNode.parentNode.id, this.id)" id="live">Live Demo</button>
+          </div>
+        </article>
+      </div>
     </div>
-    <div class="centered">
-        <table>
-            <caption>
-                Testing column spanning: Animals table
-            </caption>
-            <tr>
-              <th colspan="2">Animals</th>
-            </tr>
-            <tr>
-              <th colspan="2">Hippopotamus</th>
-            </tr>
-            <tr>
-              <th rowspan="2">Horse</th>
-              <td>Mare</td>
-            </tr>
-            <tr>
-              <td>Stallion</td>
-            </tr>
-            <tr>
-              <th colspan="2">Crocodile</th>
-            </tr>
-            <tr>
-              <th rowspan="2">Chicken</th>
-              <td>Hen</td>
-            </tr>
-            <tr>
-              <td>Rooster</td>
-            </tr>
-          </table>
-    </div>
-    <div class="centered">
-        <table>
-            <caption>
-                Testing colgroup formatting: School timetable
-            </caption>
-            <colgroup>
-                <col span="2">
-                <col style="background-color:#97DB9A;">
-                <col style="width:42px;">
-                <col style="background-color:#97DB9A;">
-                <col style="background-color:#DCC48E; border:4px solid #C1437A;">
-                <col span="2" style="width:42px;">
-            </colgroup>
-            <tr>
-                <td>&nbsp;</td>
-                <th>Mon</th>
-                <th>Tues</th>
-                <th>Wed</th>
-                <th>Thurs</th>
-                <th>Fri</th>
-                <th>Sat</th>
-                <th>Sun</th>
-            </tr>
-            <tr>
-                <th>1st period</th>
-                <td>English</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>German</td>
-                <td>Dutch</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <th>2nd period</th>
-                <td>English</td>
-                <td>English</td>
-                <td>&nbsp;</td>
-                <td>German</td>
-                <td>Dutch</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <th>3rd period</th>
-                <td>&nbsp;</td>
-                <td>German</td>
-                <td>&nbsp;</td>
-                <td>German</td>
-                <td>Dutch</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <th>4th period</th>
-                <td>&nbsp;</td>
-                <td>English</td>
-                <td>&nbsp;</td>
-                <td>English</td>
-                <td>Dutch</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-    </div>
-
-    <div class="centered">
-        <table>
-            <caption>Testing html table elements: How I chose to spend my money</caption>
-              <thead>
-                <th>Purchase</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Evaluation</th>
-                <th>Cost (€)</th>
-              </thead>
-              <tbody>
-                <tr>
-                    <td>Haircut</td>
-                    <td>Hairdresser</td>
-                    <td>12/09</td>
-                    <td>Great idea</td>
-                    <td>30</td>
-                  </tr>
-                  <tr>
-                    <td>Lasagna</td>
-                    <td>Restaurant</td>
-                    <td>12/09</td>
-                    <td>Regrets</td>
-                    <td>18</td>
-                  </tr>
-                  <tr>
-                    <td>Shoes</td>
-                    <td>Shoeshop</td>
-                    <td>13/09</td>
-                    <td>Big regrets</td>
-                    <td>65</td>
-                  </tr>
-                  <tr>
-                    <td>Toothpaste</td>
-                    <td>Supermarket</td>
-                    <td>13/09</td>
-                    <td>Good</td>
-                    <td>5</td>
-                  </tr>
-              </tbody>
-              <tfoot>
-                <td colspan="4" style="text-align: right;">SUM</td>
-                <td>118</td>
-              </tfoot>
-        </table>
-    </div>
-    <div class="centered">
-        <table>
-            <caption>Testing scope in tables: Items Sold August 2016</caption>
-              <thead>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <th colspan="3" scope="colgroup">Clothes</th>
-                  <th colspan="2" scope="colgroup">Accessories</th>
-                </tr>
-                <tr>
-                  <td>&nbsp;</td>
-                  <td>&nbsp;</td>
-                  <th scope="col">Trousers</th>
-                  <th scope="col">Skirts</th>
-                  <th scope="col">Dresses</th>
-                  <th scope="col">Bracelets</th>
-                  <th scope="col">Rings</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th rowspan="3" scope="rowgroup">Belgium</th>
-                  <th scope="row">Antwerp</th>
-                  <td>56</td>
-                  <td>22</td>
-                  <td>43</td>
-                  <td>72</td>
-                  <td>23</td>
-                </tr>
-                <tr>
-                  <th scope="row">Gent</th>
-                  <td>46</td>
-                  <td>18</td>
-                  <td>50</td>
-                  <td>61</td>
-                  <td>15</td>
-               </tr>
-               <tr>
-                 <th scope="row">Brussels</th>
-                 <td>51</td>
-                 <td>27</td>
-                 <td>38</td>
-                 <td>69</td>
-                 <td>28</td>
-               </tr>
-               <tr>
-                 <th rowspan="2" scope="rowgroup">The Netherlands</th>
-                 <th scope="row">Amsterdam</th>
-                 <td>89</td>
-                 <td>34</td>
-                 <td>69</td>
-                 <td>85</td>
-                 <td>38</td>
-               </tr>
-               <tr>
-                 <th scope="row">Utrecht</th>
-                 <td>80</td>
-                 <td>12</td>
-                 <td>43</td>
-                 <td>36</td>
-                 <td>19</td>
-               </tr>
-             </tbody>
-          </table>
-    </div>
-    <div class="centered">
-      <table>
-        <caption>
-          Data about the planets of our solar system (Planetary facts taken from <a href="https://nssdc.gsfc.nasa.gov/planetary/factsheet/">Nasa's Planetary Fact Sheet - Metric</a>).
-        </caption>
-        <colgroup>
-          <col/>
-          <col/>
-          <col style="border:4px solid #C1437A;">
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-          <col/>
-        </colgroup>
-        <thead>
-          <tr>
-            <th colspan="2">&nbsp;</th>
-            <th>Name</th>
-            <th>Mass (10<sup>24</sup>kg)</th>
-            <th>Diameter (km)</th>
-            <th>Density (kg/m<sup>3</sup>)</th>
-            <th>Gravity (m/s<sup>2</sup>)</th>
-            <th>Length of day (hours)</th>
-            <th>Distance from Sun (10<sup>6</sup>km)</th>
-            <th>Mean temperature (°C)</th>
-            <th>Number of moons</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th rowspan="4" colspan="2" scope="rowgroup">Terrestrial planets</th>
-            <th scope="row">Mercury</th>
-            <td>0.330</td>
-            <td>4,879</td>
-            <td>5427</td>
-            <td>3.7</td>
-            <td>4222.6</td>
-            <td>57.9</td>
-            <td>167</td>
-            <td>0</td>
-            <td>Closest to the Sun</td>
-          </tr>
-          <tr>
-            <th scope="row">Venus</th>
-            <td>4.87</td>
-            <td>12,104</td>
-            <td>5243</td>
-            <td>8.9</td>
-            <td>2802.0</td>
-            <td>108.2</td>
-            <td>464</td>
-            <td>0</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <th scope="row">Earth</th>
-            <td>5.97</td>
-            <td>12,756</td>
-            <td>5514</td>
-            <td>9.8</td>
-            <td>24.0</td>
-            <td>149.6</td>
-            <td>15</td>
-            <td>1</td>
-            <td>Our world</td>
-          </tr>
-          <tr>
-            <th scope="row">Mars</th>
-            <td>0.642</td>
-            <td>6,792</td>
-            <td>3933</td>
-            <td>3.7</td>
-            <td>24.7</td>
-            <td>227.9</td>
-            <td>-65</td>
-            <td>2</td>
-            <td>The red planet</td>
-          </tr>
-          <tr>
-            <th rowspan="4" scope="rowgroup">Jovian planets</th>
-            <th rowspan="2" scope="rowgroup">Gas giants</th>
-            <th scope="row">Jupiter</th>
-            <td>1898</td>
-            <td>142,984</td>
-            <td>1326</td>
-            <td>23.1</td>
-            <td>9.9</td>
-            <td>778.6</td>
-            <td>-110</td>
-            <td>67</td>
-            <td>The largest planet</td>
-          </tr>
-          <tr>
-            <th scope="row">Saturn</th>
-            <td>568</td>
-            <td>120,536</td>
-            <td>687</td>
-            <td>9.0</td>
-            <td>10.7</td>
-            <td>1433.5</td>
-            <td>-140</td>
-            <td>62</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <th rowspan="2" scope="rowgroup">Ice giants</th>
-            <th scope="row">Uranus</th>
-            <td>86.8</td>
-            <td>51,118</td>
-            <td>1271</td>
-            <td>8.7</td>
-            <td>17.2</td>
-            <td>2872.5</td>
-            <td>-195</td>
-            <td>27</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <th scope="row">Neptune</th>
-            <td>102</td>
-            <td>49,528</td>
-            <td>1638</td>
-            <td>11.0</td>
-            <td>16.1</td>
-            <td>4495.1</td>
-            <td>-200</td>
-            <td>14</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <th colspan="2" scope="rowgroup">Dwarf planets</th>
-            <th scope="row">Pluto</th>
-            <td>0.0146</td>
-            <td>2,370</td>
-            <td>2095</td>
-            <td>0.7</td>
-            <td>153.3</td>
-            <td>5906.4</td>
-            <td>-225</td>
-            <td>5</td>
-            <td>
-              Declassified as a planet in 2006, but this <a href="http://www.usatoday.com/story/tech/2014/10/02/pluto-planet-solar-system/16578959/">remains controversial</a>.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  </main>
+  <!-- ./ Main -->
+  <!-- Footer -->
+  <footer class="container">
+    <small>
+      Built with <a href="https://picocss.com">Pico</a> •
+      <a href="https://github.com/SebastinGoh/sebastingoh.github.io/tree/main/">
+        Source code
+      </a>
+    </small>
+  </footer>
+  <!-- ./ Footer -->
 </body>
 </html>
