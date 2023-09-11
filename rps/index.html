@@ -29,21 +29,10 @@
             Get a score of 5 to win! Select your option below and the computer's choice will be randomised!
         </h2>
     </div>
-    <div class="buttons centered">
-        <button id="Rock" class="button" onclick="startRound(this.id)">Rock</button>
-        <button id="Paper" class="button" onclick="startRound(this.id)">Paper</button>
-        <button id="Scissors" class="button" onclick="startRound(this.id)">Scissors</button>
-    </div>
-    <div class="centered">
-        <button id="reset" class="button" onclick="resetGame()">Reset</button>
-    </div>
     <div class="centered">
         <h2>
             Round <span id="roundCounter"></span>
         </h2>
-    </div>
-    <div class="centered">
-        <h2 id="message"></h2>
     </div>
     <div class="centered">
         <h2>
@@ -54,6 +43,31 @@
         <h2>
             Computer Score: <span id="computerScore"></span>
         </h2>
+    </div>
+    <div class="centered">
+        <h2 id="message"></h2>
+    </div>
+    <div class="option-container centered">
+        <div class="option">
+            <a id="Rock" href="#" onclick="startRound(this.id)">
+                <img src="./img/rock.svg" alt="rock"/>
+            </a>
+        </div>
+        <div class="option">
+            <a id="Paper" href="#" onclick="startRound(this.id)">
+                <img src="./img/paper.svg" alt="paper"/>
+            </a>
+        </div>
+        <div class="option">
+            <a id="Scissors" href="#" onclick="startRound(this.id)">
+                <img src="./img/scissors.svg" alt="scissors"/>
+            </a>
+        </div>
+    </div>
+    <div class="centered hidden reset">
+        <a id="reset" href="#" onclick="resetGame()">
+            <img src="./img/refresh.svg" alt="reset"/>
+        </a>
     </div>
 </body>
 </html>

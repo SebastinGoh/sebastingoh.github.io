@@ -1,14 +1,3 @@
-// Create three buttons, one for each selection. 
- 
-// Add an event listener to the buttons that call your 
-// playRound function with the correct playerSelection 
-// every time a button is clicked. 
-// (you can keep the console.logs for this step)
-
-// Add a div for displaying results and change all of your console.logs into DOM methods.
-// Display the running score, and announce a winner of the game 
-// once one player reaches 5 points.
-
 function initialiseGame() {
     // initialise computer and player scores
     let computerScore = 0;
@@ -21,9 +10,6 @@ function initialiseGame() {
     document.getElementById("computerScore").innerHTML = computerScore;
     document.getElementById("playerScore").innerHTML = playerScore;
     document.getElementById("roundCounter").innerHTML = roundCounter;
-
-    // hide reset button
-    document.getElementById("reset").style.display = "none";
 }
 
 function getComputerChoice() {
@@ -120,23 +106,26 @@ function startRound(playerChoice) {
         } else {
             document.getElementById("message").innerHTML = "Computer Wins";
         }
-        // hide player options
-        document.getElementById("Rock").style.display = "none";
-        document.getElementById("Paper").style.display = "none";
-        document.getElementById("Scissors").style.display = "none";
-
-        // show reset button
-        document.getElementById("reset").style.display = "block";
+        // toggle options
+        toggleOptions();
     } 
 }
 
 function resetGame() {
     initialiseGame();
 
-    // show player options
-    document.getElementById("Rock").style.display = "block";
-    document.getElementById("Paper").style.display = "block";
-    document.getElementById("Scissors").style.display = "block";
+    // toggle options
+    toggleOptions();
+}
+
+function toggleOptions() {
+    // toggle player options
+    document.getElementById("Rock").parentNode.classList.toggle("hidden");
+    document.getElementById("Paper").parentNode.classList.toggle("hidden");
+    document.getElementById("Scissors").parentNode.classList.toggle("hidden");
+
+    // toggle reset button
+    document.getElementById("reset").parentNode.classList.toggle("hidden");
 }
 
 // initialise scores and round counter
